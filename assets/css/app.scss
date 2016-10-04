@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 100;
+    height: 100%;
+    width: 100%;
+    background: black;
+    color: white;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.value, .calc {
+    width: 100%;
+    flex-basis: 15%;
+    flex-wrap: wrap-reverse;
+    font-size: 4em;
+    position: relative;
+    overflow: hidden;
+}
+
+.value .scroll, .calc .scroll {
+    overflow-y: hidden;
+    display: flex;
+}
+
+
+.value--of-l:before,
+.calc--of-l:before {
+    content: '';
+    background: red;
+    position: absolute;
+    top: -10%;
+    left: -100px;
+    height: 110%;
+    width: 100px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 75px 3px white;
+}
+
+.value--of-r:after,
+.calc--of-r:after {
+    content: '';
+    background: red;
+    position: absolute;
+    top: -10%;
+    right: -100px;
+    height: 110%;
+    width: 100px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 75px 3px white;
+}
+
+.value div, .calc div {
+    padding: 1vh 10%;
+    margin: auto 0;
+}
+
+.pad {
+    flex-basis: 70%;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pad button {
+    display: block;
+    flex-basis: 25%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 4em;
+    font-weight: 100;
+    background: transparent;
+    color: white;
+}
+
+.pad button.equals {
+    flex-basis: 50%;
+}

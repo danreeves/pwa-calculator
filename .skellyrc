@@ -1,0 +1,6 @@
+{
+    "alias": {
+        "vuex": "./node_modules/vuex/dist/vuex.js",
+        "vue": "./node_modules/vue/dist/vue.js"
+    }
+}
