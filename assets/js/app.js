@@ -15,11 +15,13 @@ const mutations = {
         } catch (e) {}
         // I don't care about failures. Don't update the view
     },
-    input (state, val) {
+    input (state, evt) {
+        const val = evt.target.value || '';
         state.calc = (state.calc + `${val}`).trim();
         mutations.eval(state);
         Vue.nextTick(function () {
-            document.querySelector('.calc .scroll').scrollLeft = 9999999;
+            const calcEl = document.querySelector('.calc .scroll');
+            calcEl.scrollLeft = calcEl.scrollWidth * 2;
         });
     },
     clear (state) {
@@ -29,38 +31,40 @@ const mutations = {
 };
 
 const calc = {
-    template: `
+    render (h) {
+        return (
         <div class="calculator">
             <div class="value">
                 <div class="scroll">
-                    <div>{{ value }}</div>
+                    <div>{ this.value }</div>
                 </div>
             </div>
             <div class="calc">
                 <div class="scroll">
-                    <div>{{ calcDisplay }}</div>
+                    <div>{ this.calcDisplay }</div>
                 </div>
             </div>
             <div class="pad">
-                <button @click="input('7')">7</button>
-                <button @click="input('8')">8</button>
-                <button @click="input('9')">9</button>
-                <button @click="input('*')">×</button>
-                <button @click="input('4')">4</button>
-                <button @click="input('5')">5</button>
-                <button @click="input('6')">6</button>
-                <button @click="input('/')">÷</button>
-                <button @click="input('1')">1</button>
-                <button @click="input('2')">2</button>
-                <button @click="input('3')">3</button>
-                <button @click="input('+')">+</button>
-                <button @click="input('0')">0</button>
-                <button @click="input('.')">.</button>
-                <button @click="clear">C</button>
-                <button @click="input('-')">−</button>
+                <button value="7" on-click={this.input}>7</button>
+                <button value="8" on-click={this.input}>8</button>
+                <button value="9" on-click={this.input}>9</button>
+                <button value="*" on-click={this.input}>×</button>
+                <button value="4" on-click={this.input}>4</button>
+                <button value="5" on-click={this.input}>5</button>
+                <button value="6" on-click={this.input}>6</button>
+                <button value="/" on-click={this.input}>÷</button>
+                <button value="1" on-click={this.input}>1</button>
+                <button value="2" on-click={this.input}>2</button>
+                <button value="3" on-click={this.input}>3</button>
+                <button value="+" on-click={this.input}>+</button>
+                <button value="0" on-click={this.input}>0</button>
+                <button value="." on-click={this.input}>.</button>
+                <button on-click={this.clear}>C</button>
+                <button value="-" on-click={this.input}>−</button>
             </div>
         </div>
-    `,
+        );
+    },
     computed: {
         calcDisplay () {
             return this.$store.state.calc
@@ -84,7 +88,7 @@ const calc = {
 
 const app = new Vue({
     el: '#app',
-    template: '<calc></calc>',
+    render (h) { return h('calc'); },
     components: {
         calc,
     },
