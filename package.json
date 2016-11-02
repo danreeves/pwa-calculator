@@ -1,26 +1,20 @@
 {
   "name": "pwa-calculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A PWA calculator",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "url": "git@github.com:danreeves/pwa-calculator.git",
+    "type": "git"
   },
-  "keywords": [],
   "author": "Dan Reeves <hey@danreev.es>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "vue": "2.0.1",
-    "vuex": "2.0.0"
+    "next": "^1.0.2"
   },
-  "devDependencies": {
-    "babel-helper-vue-jsx-merge-props": "2.0.1",
-    "babel-plugin-syntax-jsx": "6.13.0",
-    "babel-plugin-transform-vue-jsx": "3.1.0",
-    "eslint": "3.6.1",
-    "eslint-config-airbnb": "12.0.0",
-    "eslint-plugin-import": "1.16.0",
-    "eslint-plugin-jsx-a11y": "2.2.2",
-    "eslint-plugin-react": "6.3.0"
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   }
 }
